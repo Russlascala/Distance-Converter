@@ -1,0 +1,119 @@
+# Distance-Converter
+Miles (Mi) to Kilometers (Km) converter
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 6th Edition
+      Chapter 4
+      Hands-on Project 4-5
+
+      Author: Russ LaScala
+      Date:  11.15.17 
+
+      Filename: index.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Distance Converter</title>
+   <link rel="stylesheet" href="styles.css" />
+   <script src="modernizr.custom.05819.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>
+         Distance Converter
+      </h1>
+   </header>
+
+   <article>
+      <h2>Miles (Mi) to Kilometers (Km) converter</h2>
+      <form>
+          <fieldset>
+            <label for="mValue">
+              Enter distance in miles
+            </label>
+            <input type="number" id="mValue" />
+          </fieldset>
+          <fieldset>
+            <button type="button" id="convertButton">Convert to Km</button>
+          </fieldset>
+          <fieldset>
+             <p>Distance in kilometers</p>
+            <p id="kValue"></p>
+          </fieldset>
+     </form>
+   </article>
+   
+   <article>
+      <h2>Kilometers (Km) to Miles (Mi) converter</h2>
+      <form>
+          <fieldset>
+            <label for="kkValue">
+              Enter distance in Kilometers
+            </label>
+            <input type="number" id="kkValue" />
+          </fieldset>
+          <fieldset>
+            <button type="button" id="convertButtons">Convert to Mi</button>
+          </fieldset>
+          <fieldset>
+             <p>Distance in Miles</p>
+            <p id="mmValue"></p>
+          </fieldset>
+     </form>
+   </article>
+   <script>
+   //mi to km
+	var kilometerElement = document.getElementById("kValue");
+      var mileElement = document.getElementById("mValue");
+      function convert() {
+         var km = mileElement.value * 1.6
+         kilometerElement.innerHTML = km;
+      }
+      
+      // add backward compatible event listener to Convert to Km button and clear form
+      var submitButton = document.getElementById("convertButton");
+      if (submitButton.addEventListener) {
+         submitButton.addEventListener("click", convert, false); 
+         window.addEventListener("load", function() {
+            document.getElementById('mValue').innerHTML = ""; // clear last miles value on reload
+            document.getElementById('kValue').innerHTML = ""; // clear previous results on reload 
+         }, false);
+      } else if (submitButton.attachEvent)  {
+         submitButton.attachEvent("onclick", convert);
+         window.attachEvent("onload", function() {
+            document.getElementById('mValue').innerHTML = ""; // clear last miles value on reload
+            document.getElementById('kValue').innerHTML = ""; // clear previous results on reload 
+         });
+      }
+	  </script>
+	  
+	  <script>
+	  //km to mi new
+	   var milesElement = document.getElementById("mmValue");
+      var kilometersElement = document.getElementById("kkValue");
+      function convert() {
+         var mi = kilometersElement.value * 0.6;
+         milesElement.innerHTML = mi;
+      }
+      
+      // add backward compatible event listener to Convert to Km button and clear form
+      var submitButton = document.getElementById("convertButtons");
+      if (submitButton.addEventListener) {
+         submitButton.addEventListener("click", convert, false); 
+         window.addEventListener("load", function() {
+            document.getElementById('kkValue').innerHTML = ""; // clear last miles value on reload
+            document.getElementById('mmValue').innerHTML = ""; // clear previous results on reload 
+         }, false);
+      } else if (submitButton.attachEvent)  {
+         submitButton.attachEvent("onclick", convert);
+         window.attachEvent("onload", function() {
+            document.getElementById('mmValue').innerHTML = ""; // clear last miles value on reload
+            document.getElementById('kkValue').innerHTML = ""; // clear previous results on reload 
+         });
+      }
+   </script>
+</body>
+</html>
